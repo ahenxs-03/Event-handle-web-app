@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin access</title>
+    <script src=static/main.js defer></script>
+  </head>
+  <body>
+    <header></header>
+    <nav>
+      
+      <input type="search" placeholder="search user" name="Search" />
+    </nav>
+    <form  action='/add/category'>
+      <button>add category</button>
+    </form>
+    <select class="filter" onclick=filter()>
+      <option value="events">Events</option>
+      <option value="category">Category</option>
+      
+    </select>
+  
+    <main>
+      {{details}} 
+      <div class="event">{%if not event%}
+      <b>No event  is proposed</b>
+      {%else%}
+      <table>
+        <tr>
+          <td>name</td>
+          <td>Host</td>
+          <td>Status</td>
+        </tr>
+        {%for even in event%} {%endfor%}
+      </table>
+      {%endif%}
+    </div>
+<div class="category">
+  {%if not category%}
+  <b class="message">No category found</b>
+  {%else%}
+  <table>
+    <tr>
+      <td>id</td>
+      <td>Name</td>
+      <td>Event_list</td>
+      <td>Delete</td>
+    </tr>
+    {%for cat in category%}
+    <tr><td>{{cat["area_id"]}}</td><td>{{cat["area_name"]}}</td><td><button>View</button></td><td><a href={{url_for('delete_category',id=cat['area_id'])}}><button> Delete</button></a></td></tr>
+     {%endfor%}
+
+  </table>
+  {%endif%}
+
+  </div>
+    </main>
+  </body>
+</html>
