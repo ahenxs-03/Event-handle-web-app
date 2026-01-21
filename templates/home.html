@@ -6,14 +6,17 @@
     <title>no info</title>
 </head>
 <body>
-    <form action='/login'>
+    <form method="post">
         <label>Name</label>
+        <input type="text" name="name" id="name">
         <label>Password</label>
+        <input type="password" name="passw" id="passw">
         <button>Login</button>
 
     </from>
    
-    <a href={{url_for('create_acc')}}><button> Delete</button></a>
-
+    <a href={{url_for('create_acc')}}><button> create account</button></a>
+{{drawback}}
 </body>
+
 </html>
