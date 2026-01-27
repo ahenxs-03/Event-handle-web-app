@@ -1,10 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import app
+from app import create
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///mydatabase.db"
-app.config['SECERET_KEY'] = "super_secret"
-database = SQLAlchemy(app)
 
 
 class Role(database.Model):
