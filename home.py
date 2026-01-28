@@ -1,32 +1,37 @@
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 from flask import session
+from flask import Blueprint
 from flask_login import LoginManager, logout_user, login_user
 
-from app import app
+#from app import create
 from flask import render_template, url_for, request, redirect, flash
-from db import *
+from db import Role, User, Host, Student
 
-app.config['secret_key'] = "i DONT KNOW!"
+#app=create()
 # login maneger create
-manager = LoginManager(app)
+#manager = LoginManager(app)
+log=Blueprint('log','__name__')
 
-
-@manager.user_loader
+#@manager.user_loader
 def load_user(user_id):
     User.query.get(int(user_id))
 
 
-@app.route('/', methods=['GET', 'POST'])
+@log.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == "GET":
         return render_template('home.html')
-    else:
+    if request.method == 'POST':
+        
+        #flash('Wrong')
         name = request.form["name"]
         password = request.form["passw"]
         info = User.query.filter_by(User_name=name).all()
+        
         if info == []:
             flash('Wrong')
+            return render_template('home.html')
         else:
             l = []
             check = {
@@ -40,9 +45,9 @@ def login():
 
             flash("invalid cardinals")
             return render_template('home.html')
+    
 
-
-@app.route('/acc/create', methods=['GET', 'POST'])
+@log.route('/acc/create', methods=['GET', 'POST'])
 def create_acc():
     if request.method == "GET":
         return render_template('user.html')
@@ -74,6 +79,6 @@ def create_acc():
             flash("already exist")
 
             # prevent if already exist
+    return 'exist'
 
-
-app.run(debug=True)
+#app.run(debug=True)

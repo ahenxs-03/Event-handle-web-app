@@ -1,9 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import create
+#from app import create
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash
-
-
+#app=create()
+database = SQLAlchemy()
 class Role(database.Model):
     __tablename__ = 'Role'
     role_id = database.Column(database.Integer, primary_key=True)
