@@ -1,9 +1,12 @@
-from app import app
+#from app import app
 from flask import render_template, url_for, request, redirect
 from db import *
+from flask import Blueprint
+adm=Blueprint('admin','__name__')
 
 
-@app.route('/admin')
+
+@adm.route('/admin')
 def admin():
     event = Event.query.all()
     area = Area.query.all()
@@ -26,19 +29,19 @@ def admin():
 # status control
 
 
-@app.route('/reject event/name')
+@adm.route('/reject event/name')
 def reject(name):
     ...
     return redirect(url_for('admin'))
 
 
-@app.route('/add/category', methods=['GET', 'POST'])
+@adm.route('/add/category', methods=['GET', 'POST'])
 def add_category():
     if request.method == 'GET':
         return render_template('category.html')
 
 
-@app.route('/create', methods=['GET', 'POST'])
+@adm.route('/create', methods=['GET', 'POST'])
 def create():
     name = request.form['Areaname']
     area = Area(area_name=name)
@@ -47,7 +50,7 @@ def create():
     return redirect(url_for('admin'))
 
 
-@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+@adm.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete_category(id):
     event = Area.query.get(id)
     database.session.delete(event)
@@ -55,4 +58,4 @@ def delete_category(id):
     return redirect(url_for('admin'))
 
 
-app.run(debug=True)
+#app.run(debug=True)

@@ -6,6 +6,14 @@
     <title>no info</title>
 </head>
 <body>
+    {% with message = get_flashed_messages() %}
+        {% if message %}
+          {%for msg in message%}
+          <div class=alert-dangaer>{{msg}}</div>
+          {%endfor%}
+        {%endif%}
+    {%endwith%}
+    <a href={{url_for('log.create_acc')}}><button> create account</button></a>
     <form method="post">
         <label>Name</label>
         <input type="text" name="name" id="name">
@@ -15,7 +23,7 @@
 
     </from>
    
-    <a href={{url_for('create_acc')}}><button> create account</button></a>
+    
 {{drawback}}
 </body>
 
