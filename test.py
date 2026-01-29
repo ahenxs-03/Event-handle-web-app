@@ -1,7 +1,9 @@
 # from db import *
-from app import app
+from app import create
+from flask import session
 import os
-app.config['SECERET_KEY'] = "abc"
+app=create()
+#app.config['SECERET_KEY'] = "abc"
 # with app.app_context():
 #   for i in range(3, 9):
 #      stu = User.query.get(i)
@@ -10,5 +12,6 @@ app.config['SECERET_KEY'] = "abc"
 # stu = Student.query.get(1)
 # database.session.delete(stu)
 # database.session.commit()
-print(app.'SECRET_KEY')
-print(id(app))
+#print(app.'SECRET_KEY')
+#print(id(app))
+print (session)

@@ -20,8 +20,9 @@
       <option value="category">Category</option>
       
     </select>
-  
+    <a href="{{url_for('log.logout')}}"><button> log out</button> </a>
     <main>
+      
       {{details}} 
       <div class="event">{%if not event%}
       <b>No event  is proposed</b>

@@ -8,11 +8,7 @@ from admin import adm
 from host import hst
 def create():
     app=Flask('__name__')
-    app.config.from_object(Config)
-    app.register_blueprint(log)
-    app.register_blueprint(stu)
-    app.register_blueprint(hst)
-    app.register_blueprint(adm)
+    
     return app
 #app=create()
 
