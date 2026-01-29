@@ -48,7 +48,7 @@
       <td>Delete</td>
     </tr>
     {%for cat in category%}
-    <tr><td>{{cat["area_id"]}}</td><td>{{cat["area_name"]}}</td><td><button>View</button></td><td><a href={{url_for(admin.'delete_category',id=cat['area_id'])}}><button> Delete</button></a></td></tr>
+    <tr><td>{{cat["area_id"]}}</td><td>{{cat["area_name"]}}</td><td><button>View</button></td><td><a href={{url_for('admin.delete_category',id=cat['area_id'])}}><button> Delete</button></a></td></tr>
      {%endfor%}
 
   </table>

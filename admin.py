@@ -47,7 +47,7 @@ def create():
     area = Area(area_name=name)
     database.session.add(area)
     database.session.commit()
-    return redirect(url_for('admin'))
+    return redirect(url_for('admin.admin'))
 
 
 @adm.route('/delete/<int:id>', methods=['GET', 'POST'])
@@ -55,7 +55,7 @@ def delete_category(id):
     event = Area.query.get(id)
     database.session.delete(event)
     database.session.commit()
-    return redirect(url_for('admin'))
+    return redirect(url_for('admin.admin'))
 
 
 #app.run(debug=True)

@@ -7,7 +7,10 @@ from flask_login import LoginManager, logout_user, login_user
 #from app import create
 from flask import render_template, url_for, request, redirect, flash
 from db import Role, User, Host, Student
+sessions={
+    "user_role":''
 
+}
 #app=create()
 # login maneger create
 #manager = LoginManager(app)
@@ -40,8 +43,18 @@ def login():
             }
             for i in info:
                 if name == i.User_name and check_password_hash(i.user_password, password):
-                    login_user(i)
-                    return ('Welcome')
+                    #login_user(i)
+                    print(session) 
+                    sessions['user_role']=Role.query.get(i.role_id).role_name
+                    print(sessions)
+                    if sessions['user_role']=='admin':
+                        return  redirect(url_for('admin.admin'))
+                    elif sessions['user_role']=='host':
+                        return  redirect(url_for('host.dashboard',idi=i.user_id))
+                    elif sessions['user_role']=='student':
+                        return  redirect(url_for('student.student_dash',idi=i.user_id))
+
+
 
             flash("invalid cardinals")
             return render_template('home.html')
