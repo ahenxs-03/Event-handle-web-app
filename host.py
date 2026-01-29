@@ -4,7 +4,7 @@ from db import *
 from flask import Blueprint
 hst=Blueprint('host','__name__')
 
-@hst.route('/host')
-def admin():
+@hst.route('/host/<int:idi>')
+def dashboard(idi):
     
-    return render_template('host.html')
+    return render_template('host.html',idi=idi)
