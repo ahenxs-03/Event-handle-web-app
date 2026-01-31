@@ -48,6 +48,7 @@ class Host(database.Model):
     website = database.Column(database.String, unique=True)
     events = database.Relationship(
         'Event', lazy='dynamic', backref='Event', cascade='all,delete-orphan')
+    status = database.Column(database.String, default="pending")
 
 
 class Area(database.Model):

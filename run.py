@@ -25,4 +25,24 @@ if __name__=='__main__':
     
 #print(app.config)
 
+#with app.app_context():
+   # student_role = Role(role_name="student")
+    #host_role = Role(role_name="host")
+    #admin_role = Role(role_name="admin")
+
+    #admin = User(User_email_id="admin123xyz@asso.co.in", User_name="User_Admin",
+     #            user_password=generate_password_hash("1234"), role_id=3)
+
+    #database.session.add_all([student_role, host_role, admin_role, admin])
+    #database.session.commit()
+
+ #   database.drop_all()
+  #  database.create_all()
+    #     add admin
+     
+     
+    # database.session.commit()
+    # database.create_all()
+    # database.session.commit()
+
     
